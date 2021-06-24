@@ -1,0 +1,44 @@
+/*1*/select customer.customer_name, customer.customer_street, customer.customer_city
+from customer ,branch ,depositor ,account
+where branch_city=customer_city and customer.customer_name=depositor.customer_name and 
+depositor.account_number=account.account_number and account.branch_name=branch.branch_name ; 
+
+select *
+from (Select customer_name,customer_street,customer_city,account_number
+      From customer natural join depositor) A ,(select branch_city, account_number from account natural join branch) B
+where A.account_number=B.account_number AND A.customer_city=B.branch_city;
+
+/*2*/select distinct Customer.customer_Name, Customer.customer_street,Customer.customer_city
+from borrower, loan, branch, customer
+where borrower.customer_name=customer.customer_name AND borrower.loan_number=loan.loan_number AND loan.branch_name=branch.branch_name AND branch_city=customer_city; 
+
+/*5*/
+select customer_name, customer_street, customer_city 
+from customer natural join depositor,account 
+where   account.account_number = depositor.account_number and 
+balance = (select max(balance) from account );
+
+select customer_name, customer_street, customer_city 
+from customer natural join depositor,account 
+where   account.account_number = depositor.account_number and 
+balance > all(select balance from account where balance != (select max(balance) from account) ); 
+/*6*/
+select customer_name, customer_street, customer_city 
+from customer natural join depositor,account 
+where   account.account_number = depositor.account_number and 
+balance = (select min(balance) from account ); 
+
+select customer_name, customer_street, customer_city 
+from customer natural join depositor,account 
+where   account.account_number = depositor.account_number and 
+balance < all(select balance from account where balance != (select min(balance) from account) );  
+/*7*/
+select distinct branch_name ,  branch_city
+from branch natural join loan natural join account;
+
+/*8*/Select customer_name,customer_city from customer where customer_name in (select customer_name from depositor) and customer_name not in (select customer_name from borrower);
+
+/*9*/Select branch_name, sum(balance) from account group by branch_name having sum(balance)>(Select avg(balance) from account);
+
+/*10*/Select branch_name, sum(balance) from account group by branch_name having sum(balance)<(Select avg(balance) from account);
+

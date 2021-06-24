@@ -1,0 +1,83 @@
+select branch_name,branch_city
+from Branch
+where assets>1000000;
+
+select account_number,balance
+from account
+where branch_name='Downtown' or balance between 600 and 750;
+
+
+select account_number
+from account natural join branch
+where branch_city='Rye';
+
+
+select loan_number
+from loan natural join branch natural join customer
+where amount>=1000 and customer_city='Harrison';
+
+
+select * from account order by balance desc;
+
+
+select * from customer order by customer_city ;
+
+
+select customer_name
+from account natural join depositor intersect 
+select customer_name 
+from loan natural join borrower; 
+
+
+select * from account natural join depositor union
+select * from loan natural join borrower;
+
+
+select customer_name, customer_city
+from customer natural join borrower natural join loan minus
+select customer_name, customer_city 
+from customer natural join depositor natural join account;
+
+
+
+select sum(assets)
+from branch;
+
+
+select avg(balance) as avg_balance
+from account group by branch_name;
+
+
+select avg(balance) as avg_balance
+from branch natural join account group by branch_city;
+
+
+select min(amount)
+from loan group by branch_name;
+
+
+
+select count(loan_number)
+from loan group by branch_name;
+
+
+select customer_name,account_number
+from depositor natural join account
+where balance= (select max(balance)
+from account);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,574 @@
+Microsoft Windows [Version 10.0.10240]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+Z:\>sqlplus
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Sun Jan 20 13:53:35 2019
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 10g Express Edition Release 10.2.0.1.0 - Production
+
+SQL> create user labcse301 identified by cse301;
+
+User created.
+
+SQL> grant all privileges to labcse301;
+
+Grant succeeded.
+
+SQL> disconn
+Disconnected from Oracle Database 10g Express Edition Release 10.2.0.1.0 - Production
+SQL> connect labcse301;
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> cse301
+SP2-0042: unknown command "cse301" - rest of line ignored.
+SQL> connect labcse301;
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> connect labcse301;
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> connect labcse301;
+Enter password:
+Connected.
+SQL> select table_name from user_tables;
+
+no rows selected
+
+SQL> create table person(
+  2  personID number not null,
+  3  personName varchar2(60) not null,
+  4  personDOB date);
+
+Table created.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME
+------------------------------
+PERSON
+
+SQL> insert into person values(2018001,'Alice','01-Jan-92');
+
+1 row created.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME
+------------------------------
+PERSON
+
+SQL> c:\Documents\lab1.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\2017-1-60-084\Documents\lab1.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> select * from person
+  2  select * from person;
+select * from person
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from PERSON;
+
+  PERSONID PERSONNAME
+---------- ------------------------------------------------------------
+PERSONDOB
+---------
+   2018001 Alice
+01-JAN-92
+
+   2018007 Dimik
+07-JUN-94
+
+   2018008 Dimitf
+08-JUN-94
+
+
+  PERSONID PERSONNAME
+---------- ------------------------------------------------------------
+PERSONDOB
+---------
+   2018009 Dimitk
+09-JUN-94
+
+   2018010 Dimigk
+10-JUN-94
+
+   2018011 Dimitl
+11-JUN-94
+
+
+  PERSONID PERSONNAME
+---------- ------------------------------------------------------------
+PERSONDOB
+---------
+   2018012 Dimigfitl
+12-JUN-94
+
+   2018013 Dimitree
+13-JUN-94
+
+
+8 rows selected.
+
+SQL> select personID from PERSON;
+
+  PERSONID
+----------
+   2018001
+   2018007
+   2018008
+   2018009
+   2018010
+   2018011
+   2018012
+   2018013
+
+8 rows selected.
+
+SQL> select person,person DOB from PERSON where personID= 2018001
+  2  yhgsdyh;
+yhgsdyh
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select person,person DOB from PERSON where personID= 2018001;
+select person,person DOB from PERSON where personID= 2018001
+              *
+ERROR at line 1:
+ORA-00904: "PERSON": invalid identifier
+
+
+SQL> select person,person DOB from PERSON where personID= 2018007
+  2  jkjkaj
+  3  jmkdflmsdl
+  4  kfjkjsf;
+jkjkaj
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select personName,person DOB from PERSON where personID= 2018001;
+select personName,person DOB from PERSON where personID= 2018001
+                  *
+ERROR at line 1:
+ORA-00904: "PERSON": invalid identifier
+
+
+SQL> select personName,personDOB from PERSON where personID= 2018001;
+
+PERSONNAME                                                   PERSONDOB
+------------------------------------------------------------ ---------
+Alice                                                        01-JAN-92
+
+SQL>  create table person(
+  2    2  personID number not null,
+  3    3  personName varchar2(60) not null,
+  4  select personName,person DOB from PERSON where personID= 2018001;;
+  2  personID number not null,
+  *
+ERROR at line 2:
+ORA-00904: : invalid identifier
+
+
+SQL> create table person(
+  2    2  personID number not null,
+  3    3  personName varchar2(60) not null,
+  4    3  personName varchar2(60) not null,;
+  2  personID number not null,
+  *
+ERROR at line 2:
+ORA-00904: : invalid identifier
+
+
+SQL> create table instructor(
+  2  id number not null
+  3    3  personName varchar2(60) not null,;
+  3  personName varchar2(60) not null,
+  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table instructor(
+  2  id number not null;
+id number not null
+                 *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table instructor(
+  2  id number not null,
+  3  name
+  4  jnf;
+jnf
+  *
+ERROR at line 4:
+ORA-00907: missing right parenthesis
+
+
+SQL> C:\Users\2017-1-60-084\Documents\lab1.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\2017-1-60-084\Documents\lab1.sql
+
+Table created.
+
+SQL> @ C:\Users\2017-1-60-084\Documents\lab 1 c.sql
+SP2-0310: unable to open file "C:\Users\2017-1-60-084\Documents\lab.sql"
+SQL> @ C:\Users\2017-1-60-084\Documents\lab1c.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> @ C:\Users\2017-1-60-084\Documents\lab1d.sql
+
+NAME
+------------------------------------------------------------
+Srinivasan
+Wu
+Mozart
+Einstein
+El Said
+Gold
+Katz
+Califieri
+Sing
+Crick
+
+10 rows selected.
+
+SQL> @ C:\Users\2017-1-60-084\Documents\lab1d.sql
+
+NAME
+------------------------------------------------------------
+Srinivasan
+Wu
+Mozart
+Einstein
+El Said
+Gold
+Katz
+Califieri
+Sing
+Crick
+
+10 rows selected.
+
+  4  nbcjnb;
+nbcjnb
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended
+
+
+SQL> @  C:\Users\2017-1-60-084\Documents\lab1d.sql;
+
+NAME
+------------------------------------------------------------
+Srinivasan
+Wu
+Mozart
+Einstein
+El Said
+Gold
+Katz
+Califieri
+Sing
+Crick
+
+10 rows selected.
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Wu
+Finance
+
+Einstein
+Physics
+
+Gold
+Physics
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Katz
+Comp.Sci.
+
+Sing
+Finance
+
+Crick
+Biology
+
+
+6 rows selected.
+
+SQL> @  C:\Users\2017-1-60-084\Documents\lab1d.sql;
+
+NAME
+------------------------------------------------------------
+Srinivasan
+Wu
+Mozart
+Einstein
+El Said
+Gold
+Katz
+Califieri
+Sing
+Crick
+
+10 rows selected.
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Wu
+Finance
+
+Einstein
+Physics
+
+Gold
+Physics
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Katz
+Comp.Sci.
+
+Sing
+Finance
+
+Crick
+Biology
+
+
+6 rows selected.
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Wu
+Finance
+
+Einstein
+Physics
+
+Gold
+Physics
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Sing
+Finance
+
+
+SQL> @  C:\Users\2017-1-60-084\Documents\lab1d.sql;
+
+NAME
+------------------------------------------------------------
+Srinivasan
+Wu
+Mozart
+Einstein
+El Said
+Gold
+Katz
+Califieri
+Sing
+Crick
+
+10 rows selected.
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Wu
+Finance
+
+Einstein
+Physics
+
+Gold
+Physics
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Katz
+Comp.Sci.
+
+Sing
+Finance
+
+Crick
+Biology
+
+
+6 rows selected.
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Wu
+Finance
+
+Einstein
+Physics
+
+Gold
+Physics
+
+
+NAME
+------------------------------------------------------------
+DEPT_NAME
+------------------------------------------------------------
+Sing
+Finance
+
+
+
+        ID NAME
+---------- ------------------------------------------------------------
+DEPT_NAME                                                        SALARY
+------------------------------------------------------------ ----------
+     10101 Srinivasan
+Comp.Sci.                                                         65000
+
+     12121 Wu
+Finance                                                           90000
+
+     15151 Mozart
+Music                                                             40000
+
+
+        ID NAME
+---------- ------------------------------------------------------------
+DEPT_NAME                                                        SALARY
+------------------------------------------------------------ ----------
+     22222 Einstein
+Physics                                                           95000
+
+     32343 El Said
+History                                                           60000
+
+     33456 Gold
+Physics                                                           87000
+
+
+        ID NAME
+---------- ------------------------------------------------------------
+DEPT_NAME                                                        SALARY
+------------------------------------------------------------ ----------
+     45565 Katz
+Comp.Sci.                                                         75000
+
+     58583 Califieri
+History                                                           62000
+
+     76543 Sing
+Finance                                                           80000
+
+
+        ID NAME
+---------- ------------------------------------------------------------
+DEPT_NAME                                                        SALARY
+------------------------------------------------------------ ----------
+     76766 Crick
+Biology                                                           72000
+
+
+10 rows selected.
+
+SQL>
